@@ -1,8 +1,5 @@
 '''
 
-
-Based on the information in the file, the following tasks need to be performed:
-
     Pre-process the data, including cleaning and encoding, and determine if all the features are necessary for predicting the compressive strength. Address missing attribute values by considering whether to replace them with an average value or remove the feature altogether.
     Build a regressor using sci-kit learn functionalities, including the rational choice of a regression algorithm, data splitting, training, testing, and analysis of the hyper-parameter choices. Justify the choice of algorithm and parameters with an analysis of their effect.
     Identify the single feature that is most important to obtain a good prediction and create an interactive graph to summarize the relative importance of different variables.
