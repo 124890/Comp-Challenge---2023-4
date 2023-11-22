@@ -7,5 +7,15 @@ import seaborn as sns
 dataset = pd.read_csv('Concrete_database.csv')
 
 #Data Preprocessing
+#format as a dataframe
+dataset = pd.DataFrame(dataset)#
+#check for null values
+dataset.isnull().sum()
+#check for duplicates
+dataset.duplicated().sum()
+#check for data types
+dataset.dtypes
+
+print(dataset.head(5))
 
 #how do i push this to github
