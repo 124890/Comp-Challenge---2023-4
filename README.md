@@ -66,5 +66,3 @@ import matplotlib.pyplot as plt
 
 # Step 6: Report and Documentation
 # Provide comments and analysis of the choices made and their impact on the algorithm's predictivity
-
-This pseudocode outlines the key steps involved in the machine learning approach for predicting the compressive strength of concrete samples using the provided dataset. Once you translate this pseudocode into Python code, you can begin implementing the solution.'''
