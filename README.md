@@ -65,4 +65,3 @@ import matplotlib.pyplot as plt
 # Create an interactive graph to visualize the relative importance of different variables
 
 # Step 6: Report and Documentation
-# Provide comments and analysis of the choices made and their impact on the algorithm's predictivity
