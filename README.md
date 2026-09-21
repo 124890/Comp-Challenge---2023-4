@@ -1,31 +1,53 @@
-'''
+# Concrete Compressive Strength Prediction
 
-    Pre-process the data, including cleaning and encoding, and determine if all the features are necessary for predicting the compressive strength. Address missing attribute values by considering whether to replace them with an average value or remove the feature altogether.
-    Build a regressor using sci-kit learn functionalities, including the rational choice of a regression algorithm, data splitting, training, testing, and analysis of the hyper-parameter choices. Justify the choice of algorithm and parameters with an analysis of their effect.
-    Identify the single feature that is most important to obtain a good prediction and create an interactive graph to summarize the relative importance of different variables.
+**Comparing regression models and exploring which inputs matter.**
 
-To produce:
+A team coursework project for the 2023–24 Computational Challenge. The notebooks investigate how eight inputs describing concrete composition and age relate to compressive strength, measured in MPa.
 
-    Algorithm, including pre-processing, training, testing, and analysis of the predictivity of the algorithm.
-    An interactive graph that summarizes the relative importance of different variables.
-    A report detailing the choices made and the reasons behind them, when necessary.
+**Team:** Douglas Penning, Roman Ogorodnov, Manish Saharan and Ryan Hutchings.
 
-The dataset contains 8 quantitative input variables and 1 quantitative output variable, which is the concrete compressive strength. The input variables include Cement, Blast Furnace Slag, Fly Ash, Water, Superplasticizer, Coarse Aggregate, Fine Aggregate, and Age, while the output variable is the concrete compressive strength measured in MPa[1].
+[Start with the main analysis](Code.1.ipynb) · [View the dataset](Concrete_Data_Yeh_final.csv)
 
-Pseudocode/Planning:
+## Project overview
 
-    Load the dataset from the Concrete_database.csv file.
-    Perform data pre-processing, including cleaning and encoding, and handle missing attribute values.
-    Split the data into training and testing sets.
-    Choose a regression algorithm and build the regressor using sci-kit learn functionalities.
-    Train the model on the training data and evaluate its performance on the testing data.
-    Identify the most important feature for predicting the compressive strength.
-    Create an interactive graph to visualize the relative importance of different variables.
-    Provide comments and analysis of the choices made and their impact on the algorithm's predictivity.
+The workflow combines data cleaning, an 80/20 train–test split, regression comparison, hyperparameter tuning and interactive exploration of feature removal.
 
-# Step 1: Data Pre-processing
-# Step 2: Data Splitting
-# Step 3: Model Building
-# Step 4: Identify the most important feature
-# Step 5: Create an interactive graph
-# Step 6: Report and Documentation
+| Stage | Approach |
+| --- | --- |
+| Preprocessing | Duplicate removal, mean imputation and standard scaling; preprocessing fitted to the training split |
+| Model comparison | Linear regression, decision tree, random forest, ridge, lasso, elastic net, support vector regression and k-nearest neighbours |
+| Evaluation | RMSE, MAE and R² |
+| Tuning | Randomised search followed by grid search for the random forest |
+| Interpretation | Removing input combinations and visualising the change in prediction errors |
+| Communication | Comparison plots, interactive widgets, learning curves and exported spreadsheets |
+
+**Reported coursework finding:** the team selected random forest and identified age as the most influential input in its feature-removal analysis. These are findings from this dataset and workflow, not independently validated performance claims.
+
+## Explore the work
+
+| File | Contents |
+| --- | --- |
+| [Code.1.ipynb](Code.1.ipynb) | Main analysis, explanations and interactive visualisations |
+| [Code_hyperparameters.ipynb](Code_hyperparameters.ipynb) | Supporting hyperparameter experiments |
+| [Scaler_Imputer.ipynb](Scaler_Imputer.ipynb) | Supporting preprocessing experiments |
+| [Concrete_Data_Yeh_final.csv](Concrete_Data_Yeh_final.csv) | Input dataset |
+| [regression_performance.xlsx](regression_performance.xlsx) | Saved model-comparison output |
+
+## Local setup
+
+The main notebook records Python 3.9.12. Its imports and spreadsheet exports require the following packages:
+
+```bash
+python -m pip install jupyterlab pandas numpy scipy scikit-learn matplotlib seaborn ipywidgets openpyxl
+python -m jupyterlab
+```
+
+Open `Code.1.ipynb` from the repository folder so it can find `Concrete_Data_Yeh_final.csv`. Restart the kernel and run the cells in order. Execution includes repeated model fitting and writes spreadsheet outputs into the working folder. Interactive controls require a live notebook session.
+
+Dependencies are not version-pinned, so compatibility with the latest packages has not been verified.
+
+## Evaluation context
+
+This is educational, collaborative work. Model and feature selection reuse the evaluation split, so the reported scores should not be treated as an untouched final benchmark. A stronger follow-up would use cross-validation for selection, fit preprocessing within each fold, and reserve a separate test set for final evaluation.
+
+Random-forest fits are not consistently seeded, so results can vary between runs. See the notebook for the team's original reasoning and references.
